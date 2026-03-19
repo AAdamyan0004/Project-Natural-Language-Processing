@@ -1,0 +1,55 @@
+3/11/26 
+Prompt : Hey ChatGPT [insert MyNlp code here] for some reason my code keeps throwing an
+index out of bound error but I don't see any logic errors in my code, can you check it out?
+
+Response : Right now, correctedSentences is empty at the start, so if the user chooses Option 1 immediately, it will throw an IndexOutOfBoundsException.
+
+Fix: populate it in the constructor using your existing methods:
+
+public MyNLP() {
+    ogSentences.add("hello  guys.");
+    ogSentences.add("this is cool");
+
+    // Pre-fill correctedSentences so Option 1 works immediately
+    for(int i = 0; i < ogSentences.size(); i++){
+        String fixed = fixDoubleSpace(ogSentences.get(i));
+        fixed = fixPeriod(fixed);
+        correctedSentences.add(fixed);
+    }
+}
+2️⃣ Everything else looks great
+
+fixPeriod ✅
+
+fixDoubleSpace ✅
+
+changeEndingPunctuation ✅
+
+prompt() ✅ handles user input, adds new sentences, fixes double spaces, ensures a period, and allows punctuation change.
+
+--------------------------------------------------------------
+3/11/26 Smaller Edits
+
+Prompt : Hey ChatGPT, for some reason the statements with sentence.length aren't working, do you why this is?
+
+public String fixPeriod(String sentence){
+  if(sentence.length == 0){
+    return "Please Provide a Valid Sentence!";
+  }
+  String last = sentence.substring(sentence.length - 1);
+  if (last.equals(".") == false && last.equals("!") == false && last.equals("?") == false){
+    sentence = sentence + ".";
+  }
+  return sentence;
+}
+
+Response : The problem is that length is a method for Strings, so you need parentheses: sentence.length() instead of sentence.length.
+
+So your if should be:
+
+if (sentence.length() == 0){
+
+and your substring:
+
+String last = sentence.substring(sentence.length() - 1);
+
