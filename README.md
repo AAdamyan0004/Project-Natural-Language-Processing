@@ -5,7 +5,7 @@ Made by: Aleksandr Adamyan, Timothy Hermanto
 What this program does is that it basically finds double sacing in words and if it detects it, it turns it into single space which will fix the sentance.
 
 **EX:**
-My name is  Alex
+My name is   Alex
 
 **What the program returns:**
 
